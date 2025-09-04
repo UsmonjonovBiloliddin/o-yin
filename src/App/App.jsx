@@ -7,194 +7,263 @@ const POWER_POINTS = Math.round(UNIFORM_POINTS * 1.5);
 
 // O'zbek tilidagi savollar va topshiriqlar
 const allQuestions = [
-  // HTML asoslari
+  // HTML
   {
     id: 1,
     type: "quiz",
-    question: "HTML hujjatining asosiy boshlang'ich tegi qaysi?",
-    options: ["<html>", "<head>", "<body>", "<main>"],
-    answer: "<html>",
+    question: "HTMLda matnga urg‘u berish uchun qaysi teg ishlatiladi?",
+    options: ["<i>", "<b>", "<em>", "<u>"],
+    answer: "<em>",
     points: UNIFORM_POINTS,
   },
   {
     id: 2,
     type: "quiz",
-    question: "HTMLda yangi qatorga o‘tish uchun qaysi tag ishlatiladi?",
-    options: ["<p>", "<br>", "<hr>", "<nl>"],
-    answer: "<br>",
+    question: "HTMLda inline element qaysi?",
+    options: ["<div>", "<span>", "<section>", "<p>"],
+    answer: "<span>",
     points: UNIFORM_POINTS,
   },
-  // Table
   {
     id: 3,
     type: "quiz",
-    question: "HTML jadvalini yaratish uchun qaysi teg ishlatiladi?",
-    options: ["<table>", "<tr>", "<td>", "<th>"],
-    answer: "<table>",
+    question: "HTML form elementida tugma yaratish uchun qaysi tag ishlatiladi?",
+    options: ["<btn>", "<button>", "<input type='button'>", "<submit>"],
+    answer: "<button>",
     points: UNIFORM_POINTS,
   },
   {
     id: 4,
     type: "quiz",
-    question: "Jadvaldagi bitta ustun yaratish uchun qaysi teg ishlatiladi?",
-    options: ["<td>", "<th>", "<tr>", "<tc>"],
-    answer: "<td>",
+    question: "HTMLda matn ichida chiziq (gorizontal) chizish uchun qaysi teg ishlatiladi?",
+    options: ["<line>", "<rule>", "<hr>", "<br>"],
+    answer: "<hr>",
     points: UNIFORM_POINTS,
   },
-  // Audio/Video/Image
   {
     id: 5,
     type: "quiz",
-    question: "HTMLda audio faylni joylashtirish uchun qaysi teg ishlatiladi?",
-    options: ["<music>", "<sound>", "<audio>", "<song>"],
-    answer: "<audio>",
+    question: "HTMLda semantik teg bo‘lmagan variant qaysi?",
+    options: ["<header>", "<article>", "<div>", "<footer>"],
+    answer: "<div>",
     points: UNIFORM_POINTS,
   },
   {
     id: 6,
     type: "quiz",
-    question: "HTMLda video qo‘yish uchun qaysi teg ishlatiladi?",
-    options: ["<media>", "<video>", "<movie>", "<play>"],
-    answer: "<video>",
+    question: "HTMLda matnni tepadan kichik yozish uchun qaysi teg ishlatiladi?",
+    options: ["<sub>", "<sup>", "<small>", "<tiny>"],
+    answer: "<sup>",
     points: UNIFORM_POINTS,
   },
   {
     id: 7,
     type: "quiz",
-    question: "HTMLda rasm kiritish uchun qaysi teg ishlatiladi?",
-    options: ["<pic>", "<image>", "<src>", "<img>"],
-    answer: "<img>",
+    question: "HTMLda ro‘yxat elementlari qaysi teg orqali belgilanadi?",
+    options: ["<ol>", "<ul>", "<li>", "<list>"],
+    answer: "<li>",
     points: UNIFORM_POINTS,
   },
-  // CSS kirish
   {
     id: 8,
     type: "quiz",
-    question:
-      "CSSda yozuv rangini o‘zgartirish uchun qaysi xususiyat ishlatiladi?",
-    options: ["background-color", "font-color", "color", "text-color"],
-    answer: "color",
+    question: "HTMLda alt atributi nima uchun ishlatiladi?",
+    options: [
+      "Rasm bo‘lmasa matn ko‘rsatish uchun",
+      "Linkning manzilini ko‘rsatish uchun",
+      "Sarlavhani belgilash uchun",
+      "Brauzer fonini belgilash uchun"
+    ],
+    answer: "Rasm bo‘lmasa matn ko‘rsatish uchun",
     points: UNIFORM_POINTS,
   },
+
+  // CSS
   {
     id: 9,
     type: "quiz",
-    question: "CSS faylini HTML hujjatiga ulash uchun qaysi teg ishlatiladi?",
-    options: ["<script>", "<style>", "<link>", "<css>"],
-    answer: "<link>",
+    question: "CSSda element ichidagi matn va chegarasi orasidagi masofa nima deyiladi?",
+    options: ["margin", "padding", "border", "spacing"],
+    answer: "padding",
     points: UNIFORM_POINTS,
   },
-  // Flexbox
   {
     id: 10,
     type: "quiz",
-    question: "Flex konteyner yaratish uchun CSSda qaysi qiymat beriladi?",
-    options: [
-      "display: flex;",
-      "position: flex;",
-      "flex: block;",
-      "float: flex;",
-    ],
-    answer: "display: flex;",
+    question: "CSSda tashqi masofa (element va boshqa element orasidagi bo‘shliq) nima orqali belgilanadi?",
+    options: ["margin", "padding", "border-spacing", "gap"],
+    answer: "margin",
     points: UNIFORM_POINTS,
   },
-  // Pseudo class & element
   {
     id: 11,
     type: "quiz",
-    question:
-      "CSSda havola (link) ustiga sichqoncha olib borilganda qaysi pseudoclass ishlatiladi?",
-    options: [":hover", ":active", ":focus", ":visited"],
-    answer: ":hover",
+    question: "CSSda block-level element qaysi?",
+    options: ["<span>", "<a>", "<div>", "<strong>"],
+    answer: "<div>",
     points: UNIFORM_POINTS,
   },
   {
     id: 12,
     type: "quiz",
-    question:
-      "CSSda birinchi harfni bezash uchun qaysi pseudo-element ishlatiladi?",
-    options: ["::first-line", "::first-letter", ":first-letter", ":letter"],
-    answer: "::first-letter",
+    question: "CSSda overflow: hidden nima qiladi?",
+    options: [
+      "Elementdan tashqaridagi kontentni yashiradi",
+      "Kontentni yangi qatorda chiqaradi",
+      "Kontentni boshqa rangga o‘zgartiradi",
+      "Elementni markazga joylashtiradi"
+    ],
+    answer: "Elementdan tashqaridagi kontentni yashiradi",
     points: UNIFORM_POINTS,
   },
-  // Position
   {
     id: 13,
     type: "quiz",
-    question:
-      "CSSda elementni sahifa bo‘yicha joylash uchun qaysi property ishlatiladi?",
-    options: ["float", "position", "justify", "display"],
-    answer: "position",
+    question: "CSSda absolute joylashuv nimaga asoslanadi?",
+    options: [
+      "O‘zining eng yaqin position: relative bo‘lgan ota-elementiga",
+      "Har doim body elementiga",
+      "Ekran o‘lchamiga",
+      "HTML tegi bo‘yicha"
+    ],
+    answer: "O‘zining eng yaqin position: relative bo‘lgan ota-elementiga",
     points: UNIFORM_POINTS,
   },
-  // Transform & Animation
   {
     id: 14,
     type: "quiz",
-    question:
-      "CSSda elementni aylantirish uchun qaysi property ishlatiladi?",
-    options: ["transform", "scale", "skew", "rotate"],
-    answer: "transform",
+    question: "CSSda inline elementni blockka aylantirish uchun nima yoziladi?",
+    options: ["display: block;", "position: block;", "type: block;", "layout: block;"],
+    answer: "display: block;",
     points: UNIFORM_POINTS,
   },
   {
     id: 15,
     type: "quiz",
-    question:
-      "CSSda elementni harakatlantirish (animatsiya) uchun qaysi keyword ishlatiladi?",
-    options: ["animation-name", "animation", "animate", "keyframes"],
-    answer: "animation",
+    question: "CSSda matnni vertikal markazlashtirish uchun qaysi usul ishlaydi?",
+    options: [
+      "line-height",
+      "text-align: center;",
+      "margin: auto;",
+      "vertical-align: center;"
+    ],
+    answer: "line-height",
     points: UNIFORM_POINTS,
   },
-  // Icon + Fonts
   {
     id: 16,
     type: "quiz",
-    question: "FontAwesome ikonkalari HTMLda qanday chaqiriladi?",
-    options: ["<icon>", "<fa>", "<i>", "<awesome>"],
-    answer: "<i>",
+    question: "CSSda elementni ekranning yuqori qismiga yopishtirib qo‘yish uchun qaysi property ishlatiladi?",
+    options: ["position: fixed;", "position: sticky;", "position: absolute;", "float: top;"],
+    answer: "position: fixed;",
     points: UNIFORM_POINTS,
   },
   {
     id: 17,
     type: "quiz",
-    question:
-      "Google Fonts shriftini ulash uchun HTMLda qaysi teg ishlatiladi?",
-    options: ["<style>", "<script>", "<link>", "<font>"],
-    answer: "<link>",
+    question: "CSSda inline va block elementning farqi nimada?",
+    options: [
+      "Block to‘liq kenglikni oladi, inline faqat kontent hajmini oladi",
+      "Inline doim qizil bo‘ladi, block qora",
+      "Block faqat matn, inline faqat rasmlar uchun",
+      "Block elementni faqat headerda ishlatish mumkin"
+    ],
+    answer: "Block to‘liq kenglikni oladi, inline faqat kontent hajmini oladi",
     points: UNIFORM_POINTS,
   },
-
-  // Challenge savollar
   {
     id: 18,
-    type: "challenge",
-    challenge: "30 soniyada 17 ta tegni sanab bering !",
+    type: "quiz",
+    question: "CSSda flex-direction: column; yozilganda elementlar qanday joylashadi?",
+    options: ["Yonma-yon", "Pastga qarab", "Chapga qarab", "Diagonal bo‘yicha"],
+    answer: "Pastga qarab",
     points: UNIFORM_POINTS,
   },
   {
     id: 19,
+    type: "quiz",
+    question: "CSSda background-size: cover; nima qiladi?",
+    options: [
+      "Fon rasmni butun maydonni to‘ldirib joylashtiradi",
+      "Fon rasmni asl o‘lchamida qo‘yadi",
+      "Fon rasmni kesib tashlaydi",
+      "Fon rangini o‘zgartiradi"
+    ],
+    answer: "Fon rasmni butun maydonni to‘ldirib joylashtiradi",
+    points: UNIFORM_POINTS,
+  },
+  {
+    id: 20,
+    type: "quiz",
+    question: "CSSda border-collapse: collapse; nima uchun ishlatiladi?",
+    options: [
+      "Jadval chegaralarini birlashtirish uchun",
+      "Matnni tekislash uchun",
+      "Fon rasmini yopishtirish uchun",
+      "Chegarani yumaloqlash uchun"
+    ],
+    answer: "Jadval chegaralarini birlashtirish uchun",
+    points: UNIFORM_POINTS,
+  },
+  {
+    id: 21,
+    type: "quiz",
+    question: "CSSda transition nima vazifani bajaradi?",
+    options: [
+      "O‘tish animatsiyasini qo‘shadi",
+      "Elementni yashiradi",
+      "Elementni joylashtiradi",
+      "Elementni bloklaydi"
+    ],
+    answer: "O‘tish animatsiyasini qo‘shadi",
+    points: UNIFORM_POINTS,
+  },
+  {
+    id: 22,
+    type: "quiz",
+    question: "CSSda transform: scale(2); nima qiladi?",
+    options: [
+      "Elementni kattalashtiradi",
+      "Elementni kichraytiradi",
+      "Elementni buradi",
+      "Elementni markazlashtiradi"
+    ],
+    answer: "Elementni kattalashtiradi",
+    points: UNIFORM_POINTS,
+  },
+
+  // Challenge
+  {
+    id: 23,
     type: "challenge",
-    challenge: "30 soniyada 20 ta dan ko'p Css style  sanab bering !",
+    challenge: "30 soniyada HTMLda 5 ta semantik teg sanab bering!",
+    points: UNIFORM_POINTS,
+  },
+  {
+    id: 24,
+    type: "challenge",
+    challenge: "30 soniyada CSSda 7 ta positioning va layout xususiyatlarini sanang!",
     points: UNIFORM_POINTS,
   },
 
   // Power savol
   {
-    id: 20,
+    id: 25,
     type: "power",
-    question: "HTMLda <meta> tegi nima vazifani bajaradi?",
+    question: "CSSda position: sticky; bilan position: fixed; o‘rtasidagi asosiy farq nima?",
     options: [
-      "Sahifaning metamaʼlumotlarini belgilash (masalan: charset, description, author)",
-      "Sahifaga multimedia (rasm, video, audio) qo‘shish uchun",
-      "HTML sahifasiga interaktiv skript kiritish uchun",
-      "Brauzerda matnni rangli qilib chiqarish uchun",
+      "Sticky element skroll paytida ma’lum joyda yopishib qoladi, fixed esa har doim ekranga yopishib qoladi",
+      "Sticky faqat headerda ishlaydi, fixed esa bodyda",
+      "Fixed faqat inline elementlarda ishlaydi",
+      "Sticky elementni absolyut joylashtiradi"
     ],
-    answer:
-      "Sahifaning metamaʼlumotlarini belgilash (masalan: charset, description, author)",
+    answer: "Sticky element skroll paytida ma’lum joyda yopishib qoladi, fixed esa har doim ekranga yopishib qoladi",
     points: POWER_POINTS,
-  },
+  }
 ];
+
+
+
 
 function App() {
   const [team1Score, setTeam1Score] = useState(0);
@@ -274,7 +343,6 @@ function App() {
     // "Super Savol" va "Quiz"lar uchun mantiq
     if (isCorrect) {
       if (currentQuestion.type === "power") {
-        setCurrentQuestion(null);
         setPowerModal(true);
       } else {
         const points = currentQuestion.points;
@@ -316,7 +384,7 @@ function App() {
         ? setTeam1Score((s) => s + pointsToAward)
         : setTeam2Score((s) => s + pointsToAward);
     } else {
-      activeTeam === 1
+      activeTeam === 2
         ? setTeam2Score((s) => Math.max(0, s - pointsToAward))
         : setTeam1Score((s) => Math.max(0, s - pointsToAward));
     }
