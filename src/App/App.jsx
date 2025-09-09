@@ -3,266 +3,296 @@ import React, { useState, useEffect } from "react";
 // Barcha savollar uchun bir xil ball
 const UNIFORM_POINTS = 20;
 // "Super Savol" uchun 1,5 baravar ko'proq ball
-const POWER_POINTS = Math.round(UNIFORM_POINTS * 1.5);
+const POWER_POINTS = Math.round(UNIFORM_POINTS * 2);
 
 // O'zbek tilidagi savollar va topshiriqlar
+
 const allQuestions = [
-  // HTML
+  // ========== HTML (1–12) ==========
   {
     id: 1,
     type: "quiz",
-    question: "HTMLda matnga urg‘u berish uchun qaysi teg ishlatiladi?",
-    options: ["<i>", "<b>", "<em>", "<u>"],
-    answer: "<em>",
+    question: "HTMLda <title> tegi noto‘g‘ri ishlatilgan ta’rif qaysi?",
+    options: [
+      "Brauzer yorlig‘ida nom ko‘rsatadi",
+      "SEO uchun muhim hisoblanadi",
+      "Sahifa ichida asosiy sarlavha sifatida chiqadi",
+      "Bookmark qo‘shilganda nom sifatida ko‘rinadi",
+    ],
+    answer: "Sahifa ichida asosiy sarlavha sifatida chiqadi",
     points: UNIFORM_POINTS,
   },
   {
     id: 2,
     type: "quiz",
-    question: "HTMLda inline element qaysi?",
-    options: ["<div>", "<span>", "<section>", "<p>"],
-    answer: "<span>",
+    question: "HTMLda <section> va <div> o‘rtasidagi asosiy farq nima?",
+    options: [
+      "Hech qanday farq yo‘q",
+      "<section> semantik, <div> oddiy konteyner",
+      "<div> faqat flex uchun ishlaydi",
+      "<section> faqat <head> ichida yoziladi",
+    ],
+    answer: "<section> semantik, <div> oddiy konteyner",
     points: UNIFORM_POINTS,
   },
   {
     id: 3,
     type: "quiz",
-    question: "HTML form elementida tugma yaratish uchun qaysi tag ishlatiladi?",
-    options: ["<btn>", "<button>", "<input type='button'>", "<submit>"],
-    answer: "<button>",
+    question: "HTMLda title atributi nima uchun ishlatiladi?",
+    options: [
+      "Faqat <title> tegida",
+      "Faqat <a> tegida",
+      "Deyarli barcha tegda qo‘shimcha tooltip ko‘rsatadi",
+      "Faqat <head> bo‘limida",
+    ],
+    answer: "Deyarli barcha tegda qo‘shimcha tooltip ko‘rsatadi",
     points: UNIFORM_POINTS,
   },
   {
     id: 4,
     type: "quiz",
-    question: "HTMLda matn ichida chiziq (gorizontal) chizish uchun qaysi teg ishlatiladi?",
-    options: ["<line>", "<rule>", "<hr>", "<br>"],
-    answer: "<hr>",
+    question: "HTMLda video autoplay atributi cheklovi qaysi?",
+    options: [
+      "Har doim avtomatik o‘ynaydi",
+      "Faqat .mp4 formatida ishlaydi",
+      "Ovoz bo‘lsa autoplay bloklanadi",
+      "Faqat Safari’da ishlamaydi",
+    ],
+    answer: "Ovoz bo‘lsa autoplay bloklanadi",
     points: UNIFORM_POINTS,
   },
   {
     id: 5,
     type: "quiz",
-    question: "HTMLda semantik teg bo‘lmagan variant qaysi?",
-    options: ["<header>", "<article>", "<div>", "<footer>"],
-    answer: "<div>",
+    question: "HTMLda <meta viewport> nima vazifa bajaradi?",
+    options: [
+      "Mobil qurilmaga moslashtirish",
+      "Fayl hajmini kamaytirish",
+      "CSS kodini ulash",
+      "Brauzer rang sxemasini o‘zgartirish",
+    ],
+    answer: "Mobil qurilmaga moslashtirish",
     points: UNIFORM_POINTS,
   },
   {
     id: 6,
     type: "quiz",
-    question: "HTMLda matnni tepadan kichik yozish uchun qaysi teg ishlatiladi?",
-    options: ["<sub>", "<sup>", "<small>", "<tiny>"],
-    answer: "<sup>",
+    question: "HTMLda placeholder atributi noto‘g‘ri ishlatilgan misolni toping:",
+    options: [
+      "<input placeholder='Ism kiriting'>",
+      "<textarea placeholder='Izoh yozing'></textarea>",
+      "<title placeholder='Test'>",
+      "<input type='email' placeholder='Email'>",
+    ],
+    answer: "<title placeholder='Test'>",
     points: UNIFORM_POINTS,
   },
   {
     id: 7,
     type: "quiz",
-    question: "HTMLda ro‘yxat elementlari qaysi teg orqali belgilanadi?",
-    options: ["<ol>", "<ul>", "<li>", "<list>"],
-    answer: "<li>",
+    question: "HTMLda accessibility uchun qaysi atribut muhim?",
+    options: ["alt", "src", "href", "rel"],
+    answer: "alt",
     points: UNIFORM_POINTS,
   },
   {
     id: 8,
     type: "quiz",
-    question: "HTMLda alt atributi nima uchun ishlatiladi?",
+    question: "HTMLda <iframe> qanday vazifa bajaradi?",
     options: [
-      "Rasm bo‘lmasa matn ko‘rsatish uchun",
-      "Linkning manzilini ko‘rsatish uchun",
-      "Sarlavhani belgilash uchun",
-      "Brauzer fonini belgilash uchun"
+      "Sahifa ichiga boshqa sahifani qo‘yadi",
+      "Fonni o‘zgartiradi",
+      "Scriptni yuklaydi",
+      "Faqat video uchun ishlatiladi",
     ],
-    answer: "Rasm bo‘lmasa matn ko‘rsatish uchun",
+    answer: "Sahifa ichiga boshqa sahifani qo‘yadi",
     points: UNIFORM_POINTS,
   },
-
-  // CSS
   {
     id: 9,
     type: "quiz",
-    question: "CSSda element ichidagi matn va chegarasi orasidagi masofa nima deyiladi?",
-    options: ["margin", "padding", "border", "spacing"],
-    answer: "padding",
+    question: "HTMLda <noscript> nima uchun kerak?",
+    options: [
+      "CSS ishlamasa matn ko‘rsatadi",
+      "JavaScript o‘chirilganda alternativ matn ko‘rsatadi",
+      "Har doim SEO uchun qo‘shiladi",
+      "Audio qo‘shish uchun",
+    ],
+    answer: "JavaScript o‘chirilganda alternativ matn ko‘rsatadi",
     points: UNIFORM_POINTS,
   },
   {
     id: 10,
     type: "quiz",
-    question: "CSSda tashqi masofa (element va boshqa element orasidagi bo‘shliq) nima orqali belgilanadi?",
-    options: ["margin", "padding", "border-spacing", "gap"],
-    answer: "margin",
+    question: "HTMLda qaysi teg blok elementi hisoblanadi?",
+    options: ["<span>", "<strong>", "<p>", "<img>"],
+    answer: "<p>",
     points: UNIFORM_POINTS,
   },
   {
     id: 11,
     type: "quiz",
-    question: "CSSda block-level element qaysi?",
-    options: ["<span>", "<a>", "<div>", "<strong>"],
-    answer: "<div>",
+    question: "HTMLda inline elementga misol qaysi?",
+    options: ["<div>", "<h1>", "<span>", "<section>"],
+    answer: "<span>",
     points: UNIFORM_POINTS,
   },
   {
     id: 12,
     type: "quiz",
-    question: "CSSda overflow: hidden nima qiladi?",
-    options: [
-      "Elementdan tashqaridagi kontentni yashiradi",
-      "Kontentni yangi qatorda chiqaradi",
-      "Kontentni boshqa rangga o‘zgartiradi",
-      "Elementni markazga joylashtiradi"
-    ],
-    answer: "Elementdan tashqaridagi kontentni yashiradi",
+    question: "HTMLda global atributlardan biri noto‘g‘ri berilgan:",
+    options: ["class", "id", "style", "margin"],
+    answer: "margin",
     points: UNIFORM_POINTS,
   },
+
+  // ========== CSS (13–25) ==========
   {
     id: 13,
     type: "quiz",
-    question: "CSSda absolute joylashuv nimaga asoslanadi?",
+    question: "Flexboxda justify-content: space-between; nima qiladi?",
     options: [
-      "O‘zining eng yaqin position: relative bo‘lgan ota-elementiga",
-      "Har doim body elementiga",
-      "Ekran o‘lchamiga",
-      "HTML tegi bo‘yicha"
+      "Elementlarni chapga yig‘adi",
+      "Elementlarni markazlashtiradi",
+      "Elementlarni ikki chetga joylashtiradi",
+      "Elementlarni vertical qiladi",
     ],
-    answer: "O‘zining eng yaqin position: relative bo‘lgan ota-elementiga",
+    answer: "Elementlarni ikki chetga joylashtiradi",
     points: UNIFORM_POINTS,
   },
   {
     id: 14,
     type: "quiz",
-    question: "CSSda inline elementni blockka aylantirish uchun nima yoziladi?",
-    options: ["display: block;", "position: block;", "type: block;", "layout: block;"],
-    answer: "display: block;",
+    question: "CSS transform: rotate(90deg); nima qiladi?",
+    options: [
+      "Elementni 90px buradi",
+      "Elementni 90 daraja aylantiradi",
+      "Elementni chapga 90px suradi",
+      "Elementni vertikal cho‘zadi",
+    ],
+    answer: "Elementni 90 daraja aylantiradi",
     points: UNIFORM_POINTS,
   },
   {
     id: 15,
     type: "quiz",
-    question: "CSSda matnni vertikal markazlashtirish uchun qaysi usul ishlaydi?",
+    question: "CSSda @keyframes sintaksisi to‘g‘ri berilgan javob qaysi?",
     options: [
-      "line-height",
-      "text-align: center;",
-      "margin: auto;",
-      "vertical-align: center;"
+      "@keyframes move {0%{left:0;} 100%{left:100px;}}",
+      "keyframes move {0%{left:0;} 100%{left:100px;}}",
+      "@animation move {…}",
+      "animation: keyframes {…}",
     ],
-    answer: "line-height",
+    answer: "@keyframes move {0%{left:0;} 100%{left:100px;}}",
     points: UNIFORM_POINTS,
   },
   {
     id: 16,
     type: "quiz",
-    question: "CSSda elementni ekranning yuqori qismiga yopishtirib qo‘yish uchun qaysi property ishlatiladi?",
-    options: ["position: fixed;", "position: sticky;", "position: absolute;", "float: top;"],
-    answer: "position: fixed;",
+    question: "CSS transform: scale(2); nima qiladi?",
+    options: [
+      "Elementni 2px kattalashtiradi",
+      "Elementni 2 baravar kattalashtiradi",
+      "Elementni 200% opacity qiladi",
+      "Elementni vertikal siljitadi",
+    ],
+    answer: "Elementni 2 baravar kattalashtiradi",
     points: UNIFORM_POINTS,
   },
   {
     id: 17,
     type: "quiz",
-    question: "CSSda inline va block elementning farqi nimada?",
+    question: "Flexboxda align-items: stretch; nima qiladi?",
     options: [
-      "Block to‘liq kenglikni oladi, inline faqat kontent hajmini oladi",
-      "Inline doim qizil bo‘ladi, block qora",
-      "Block faqat matn, inline faqat rasmlar uchun",
-      "Block elementni faqat headerda ishlatish mumkin"
+      "Elementlarni yonma-yon qiladi",
+      "Elementlarni konteyner balandligiga cho‘zadi",
+      "Elementlarni gorizontal markazlashtiradi",
+      "Elementlarni yuqoriga joylashtiradi",
     ],
-    answer: "Block to‘liq kenglikni oladi, inline faqat kontent hajmini oladi",
+    answer: "Elementlarni konteyner balandligiga cho‘zadi",
     points: UNIFORM_POINTS,
   },
   {
     id: 18,
     type: "quiz",
-    question: "CSSda flex-direction: column; yozilganda elementlar qanday joylashadi?",
-    options: ["Yonma-yon", "Pastga qarab", "Chapga qarab", "Diagonal bo‘yicha"],
-    answer: "Pastga qarab",
+    question: "Margin collapse hodisasi qachon yuz beradi?",
+    options: [
+      "Horizontal marginlar urishsa",
+      "Ikkita vertical margin to‘qnashsa",
+      "Padding margin bilan kesishsa",
+      "Flex konteyner ichida",
+    ],
+    answer: "Ikkita vertical margin to‘qnashsa",
     points: UNIFORM_POINTS,
   },
   {
     id: 19,
     type: "quiz",
-    question: "CSSda background-size: cover; nima qiladi?",
+    question: "CSSda transform va transition farqi nima?",
     options: [
-      "Fon rasmni butun maydonni to‘ldirib joylashtiradi",
-      "Fon rasmni asl o‘lchamida qo‘yadi",
-      "Fon rasmni kesib tashlaydi",
-      "Fon rangini o‘zgartiradi"
+      "Transform o‘zgarishni qiladi, transition o‘zgarish jarayonini boshqaradi",
+      "Transform faqat rang uchun, transition faqat fon uchun",
+      "Ikkalasi ham bir xil",
+      "Transition faqat HTMLda ishlaydi",
     ],
-    answer: "Fon rasmni butun maydonni to‘ldirib joylashtiradi",
+    answer: "Transform o‘zgarishni qiladi, transition o‘zgarish jarayonini boshqaradi",
     points: UNIFORM_POINTS,
   },
   {
     id: 20,
     type: "quiz",
-    question: "CSSda border-collapse: collapse; nima uchun ishlatiladi?",
+    question: "CSSda translateX(50%) nima qiladi?",
     options: [
-      "Jadval chegaralarini birlashtirish uchun",
-      "Matnni tekislash uchun",
-      "Fon rasmini yopishtirish uchun",
-      "Chegarani yumaloqlash uchun"
+      "Elementni chapga 50px siljitadi",
+      "Elementni konteynerning 50% ga siljitadi",
+      "Elementni vertikal ko‘chiradi",
+      "Elementni 50% kichraytiradi",
     ],
-    answer: "Jadval chegaralarini birlashtirish uchun",
-    points: UNIFORM_POINTS,
-  },
-  {
-    id: 21,
-    type: "quiz",
-    question: "CSSda transition nima vazifani bajaradi?",
-    options: [
-      "O‘tish animatsiyasini qo‘shadi",
-      "Elementni yashiradi",
-      "Elementni joylashtiradi",
-      "Elementni bloklaydi"
-    ],
-    answer: "O‘tish animatsiyasini qo‘shadi",
-    points: UNIFORM_POINTS,
-  },
-  {
-    id: 22,
-    type: "quiz",
-    question: "CSSda transform: scale(2); nima qiladi?",
-    options: [
-      "Elementni kattalashtiradi",
-      "Elementni kichraytiradi",
-      "Elementni buradi",
-      "Elementni markazlashtiradi"
-    ],
-    answer: "Elementni kattalashtiradi",
+    answer: "Elementni konteynerning 50% ga siljitadi",
     points: UNIFORM_POINTS,
   },
 
-  // Challenge
+  // === CHALLENGE (21–24) ===
+  {
+    id: 21,
+    type: "challenge",
+    question: "30 soniyada 15 ta kino sanab bering ",
+    points: UNIFORM_POINTS * 2,
+  },
+  {
+    id: 22,
+    type: "challenge",
+    question: "30 soniyada 15 ta qo'shiqchi sanab bering",
+    points: UNIFORM_POINTS * 2,
+  },
   {
     id: 23,
     type: "challenge",
-    challenge: "30 soniyada HTMLda 5 ta semantik teg sanab bering!",
-    points: UNIFORM_POINTS,
+    question: "Raqib jamoadan  istalgan inson bilan oxirgi harfga teg aytish o'yinini o'ynang",
+    points: UNIFORM_POINTS * 2,
   },
   {
     id: 24,
     type: "challenge",
-    challenge: "30 soniyada CSSda 7 ta positioning va layout xususiyatlarini sanang!",
-    points: UNIFORM_POINTS,
+    question: "Sizga raqib jamoadan shart beriladi ",
+    points: UNIFORM_POINTS * 2,
   },
 
-  // Power savol
+  // === POWER (25) ===
   {
     id: 25,
     type: "power",
-    question: "CSSda position: sticky; bilan position: fixed; o‘rtasidagi asosiy farq nima?",
-    options: [
-      "Sticky element skroll paytida ma’lum joyda yopishib qoladi, fixed esa har doim ekranga yopishib qoladi",
-      "Sticky faqat headerda ishlaydi, fixed esa bodyda",
-      "Fixed faqat inline elementlarda ishlaydi",
-      "Sticky elementni absolyut joylashtiradi"
+    question: "CSS transform, transition va animation o‘rtasidagi eng aniq ta’rifni toping:",
+     options: [
+      "Transform elementni o‘zgartiradi; transition o‘zgarishni asta-sekin bajaradi; animation esa murakkab ketma-ket harakatni boshqaradi",
+      "Transform faqat rang o‘zgartiradi; transition esa faqat fon rangini",
+      "Animation transitiondan farqsiz",
+      "Transition faqat flex konteynerda ishlaydi",
     ],
-    answer: "Sticky element skroll paytida ma’lum joyda yopishib qoladi, fixed esa har doim ekranga yopishib qoladi",
-    points: POWER_POINTS,
-  }
+    answer: "Transform elementni o‘zgartiradi; transition o‘zgarishni asta-sekin bajaradi; animation esa murakkab ketma-ket harakatni boshqaradi",
+    points: UNIFORM_POINTS * 3,
+  },
 ];
-
-
 
 
 function App() {
